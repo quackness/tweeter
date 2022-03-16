@@ -19,9 +19,20 @@ body {
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
+  top: 120px;/* nav top is 0, has height of 120px so body starts at 120px to align*/
+  position: relative;/* relative to body tag https://www.youtube.com/watch?v=jx5jmI0UlXU */
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ .container {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   width: 90%; /* XX% of body */
+   margin-left: auto;
+   margin-right: auto;
+ }
 
