@@ -1,0 +1,15 @@
+header {
+  height: 400px;
+  width: 100%;
+  background-color: aqua;
+  position: relative;
+  top: 120px;
+  background-image: url("/images/cardboard-flat.png");
+}
+
+.image, .name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

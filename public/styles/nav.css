@@ -3,10 +3,12 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   height: 120px;
-  width: auto;
+  width: 100%;
   background-color: #4056A1;
   color: #FFFFFF;
   padding: 0 1.5em 0;
+  position: fixed;
+  z-index: 1;
 }
 
 nav > span {
@@ -30,9 +32,6 @@ nav > span {
 
 
 
-/* 120 pixels in height
-Full width of the viewport
-#4056A1 as its default background colour
-#FFFFFF as its default font colour
-<span> within the <nav> uses Bungee as its default font-family
-1.5ems of space on the right and left between the content and the edges */
+
+
+
