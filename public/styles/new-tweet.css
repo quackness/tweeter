@@ -1,0 +1,41 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tweet-line {
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: space-between;
+  font-family: 'Bungee', cursive;
+  margin: 25px;
+  width: 100%;
+}
+
+.tweet-line button {
+  background-color: #4056A1;
+  color: #FFFFFF;
+}
+
+textarea {
+  background-color: #f4f1ec;
+  width: 100%;
+  border: none;
+  border-bottom: 3px solid grey;
+  min-width: 100%;
+  min-height: 40px;
+  max-height: 40px;
+}
+
+/* attribute for a placeholder */
+::placeholder {
+  font-weight: bold;
+}
+
+
+
+
+
+
+
