@@ -28,8 +28,9 @@ textarea {
   border: none;
   border-bottom: 3px solid grey;
   min-width: 100%;
-  min-height: 40px;
-  max-height: 40px;
+  min-height: 60px;
+  max-height: 60px;
+  margin: 3px;
 }
 
 /* //attribute for a placeholder
