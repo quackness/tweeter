@@ -17,7 +17,7 @@ $(document).ready(function() {
 });
 
 
-
+//alternatives
 // $(document).ready(function() {
 //   $("#tweet-text").keydown(function( event ) {
 //     console.log($(this).val());
