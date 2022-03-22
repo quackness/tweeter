@@ -152,22 +152,9 @@ $(document).ready(function() {
   //   alert( "Handler for .submit() called." );
   //   preventDefault();
   // });
-
-  $("#target").submit(function(event) {
-    event.preventDefault();
-    //alert( "Handler for .submit() called." );
-    //console.log(this);
-    // console.log($("#target"));
-    // console.log( $("#target").serialize() );
-    const formData = $("#target").serialize();//serializing 
-    $.ajax("/tweets", {method: "POST", data: formData})
-    .then(function(data) {
-      console.log("success!", data);
-    })
-
-    })
-  });
-
+  //form submission with jQuery
+  $("#target").submit(onSubmit);
+});
 
 
 //step 1 You can start by having your function create hardcoded tweets, like so:
@@ -176,7 +163,6 @@ $(document).ready(function() {
 //   return $tweet;
 // };
 // createTweetElement();
-
 //step 2 object
 // const tweetData = {
 //   "user": {
@@ -189,6 +175,7 @@ $(document).ready(function() {
 //     },
 //   "created_at": 1461116232227
 // }
+
  //function that returns a tweet
 const createTweetElement = function (tweetData) {//single tweet object from the array
   const $tweet = $(`<article class="tweet"> 
@@ -239,16 +226,24 @@ const data = [
   }
 ]
 
+ // loops through tweets
+  // calls createTweetElement for each tweet
+  // takes return value and appends it to the tweets container
+  //$('#tweets-container').append($tweet);
 const renderTweets = function(tweets) {//data array
   for (let tweet of tweets) {
     const $tweet = createTweetElement(tweet);
     $('#tweets-container').append($tweet);
   }
-  // loops through tweets
-  // calls createTweetElement for each tweet
-  // takes return value and appends it to the tweets container
-  //$('#tweets-container').append($tweet);
 };
 
 
-
+const onSubmit = function(event) {
+  event.preventDefault();
+  const formData = $(this).serialize();//creates a text string in standard URL-encoded notation
+  //console.log(formData);
+  $.post("/tweets", formData)
+  .then(function(data) {
+    console.log("success!", data);
+  })  
+};
