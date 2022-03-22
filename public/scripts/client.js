@@ -147,9 +147,28 @@ $(document).ready(function() {
   //step 2
   // const $tweet = createTweetElement(tweetData);
   // $('#tweets-container').append($tweet);
-  renderTweets(data);//step 1
+  renderTweets(data);//step 1 (Dynamic tweets)
+  // $( "#target" ).on("submit", function() {
+  //   alert( "Handler for .submit() called." );
+  //   preventDefault();
+  // });
 
-});
+  $("#target").submit(function(event) {
+    event.preventDefault();
+    //alert( "Handler for .submit() called." );
+    //console.log(this);
+    // console.log($("#target"));
+    // console.log( $("#target").serialize() );
+    const formData = $("#target").serialize();//serializing 
+    $.ajax("/tweets", {method: "POST", data: formData})
+    .then(function(data) {
+      console.log("success!", data);
+    })
+
+    })
+  });
+
+
 
 //step 1 You can start by having your function create hardcoded tweets, like so:
 // const createTweetElement = function () {
