@@ -147,7 +147,7 @@ $(document).ready(function() {
   //step 2
   // const $tweet = createTweetElement(tweetData);
   // $('#tweets-container').append($tweet);
-  renderTweets(data);
+  renderTweets(data);//step 1
 
 });
 
@@ -159,19 +159,19 @@ $(document).ready(function() {
 // createTweetElement();
 
 //step 2 object
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-  "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-  "created_at": 1461116232227
-}
+// const tweetData = {
+//   "user": {
+//     "name": "Newton",
+//     "avatars": "https://i.imgur.com/73hZDYK.png",
+//       "handle": "@SirIsaac"
+//     },
+//   "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//   "created_at": 1461116232227
+// }
  //function that returns a tweet
-const createTweetElement = function (tweetData) {
+const createTweetElement = function (tweetData) {//single tweet object from the array
   const $tweet = $(`<article class="tweet"> 
   <header>
     <div class="header-left">
@@ -183,7 +183,7 @@ const createTweetElement = function (tweetData) {
   <div class="single-tweet">${tweetData.content.text}</div>
   <div><hr></hr></div>
   <footer>
-    <p>${tweetData.created_at}</p>
+    <p>${tweetData.created_at} days ago</p>
     <div class="social-icons">
       <i class="fa-solid fa-flag"></i>
       <i class="fa-solid fa-retweet"></i>
@@ -220,9 +220,9 @@ const data = [
   }
 ]
 
-const renderTweets = function(tweets) {
+const renderTweets = function(tweets) {//data array
   for (let tweet of tweets) {
-    const $tweet = createTweetElement(tweet)
+    const $tweet = createTweetElement(tweet);
     $('#tweets-container').append($tweet);
   }
   // loops through tweets
