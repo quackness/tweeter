@@ -234,18 +234,39 @@ return $tweet;
 const renderTweets = function(tweets) {//data array
   for (let tweet of tweets) {
     const $tweet = createTweetElement(tweet);
-    $('#tweets-container').append($tweet);
+    console.log("tweet inside loop", $tweet);
+    $('#tweets-feed').append($tweet);
   }
 };
 
 const onSubmit = function(event) {
   event.preventDefault();
+  //validate the form
+  const $textinput = $(this).closest("form").find("textarea").val().trim();
+  console.log($textinput);
+   if ($textinput === null || $textinput === "") {
+     alert("Input field cannot be empty")
+   } else if ($textinput.length > 140) {
+    alert("Tweet too long")
+   } else {
   const formData = $(this).serialize();//creates a text string in standard URL-encoded notation
   //console.log(formData);
+ 
   $.post("/tweets", formData)
-  .then(function(data) {
-    console.log("success!", data);
-  })  
+    .then(function(data) {
+    //console.log("success!", data);
+    const $tweet = createTweetElement(data);
+    //console.log($tweet);
+    $("#tweets-feed").prepend($tweet);
+    //formData.val("");
+    // $("#target").reset();
+    $("#tweet-text").val("")//sets the value to the empty string 
+    })
+   }
+    // .catch(function(err) {
+    //   alert(err.responseJSON.error);
+    // })
+
 };
 
 const loadTweets = function() {
