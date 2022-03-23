@@ -187,7 +187,7 @@ const createTweetElement = function (tweetData) {//single tweet object from the 
     </div>
     <p class="username">${tweetData.user.handle}</p>
   </header>
-  <div class="single-tweet">${tweetData.content.text}</div>
+  <div class="single-tweet">${escape(tweetData.content.text)}</div>
   <div><hr></hr></div>
   <footer>
     <p>${timeago.format(tweetData.created_at)}</p> 
@@ -242,11 +242,11 @@ const renderTweets = function(tweets) {//data array
 const onSubmit = function(event) {
   event.preventDefault();
   //validate the form
-  const $textinput = $(this).closest("form").find("textarea").val().trim();
+  const $textinput = $(this).closest("form").find("textarea").val();
   console.log($textinput);
    if ($textinput === null || $textinput === "") {
      alert("Input field cannot be empty")
-   } else if ($textinput.length > 140) {
+   } else if ($textinput.trim().length > 140) {
     alert("Tweet too long")
    } else {
   const formData = $(this).serialize();//creates a text string in standard URL-encoded notation
@@ -277,3 +277,21 @@ const loadTweets = function() {
   })  
 };
 
+// escape function
+
+const escape = function (str) {
+  let div = document.createElement("div");//creates a div in DOM
+  div.appendChild(document.createTextNode(str));//appending child with a string
+  return div.innerHTML;//returns the HTML content (inner HTML) of an element.
+};
+
+
+ 
+
+
+// $.escapeSelector( "#target" ); // "\#target"
+// const escape = function (tweetContent) {
+// }
+// const $textToescape = $(this).closest("form").find("textarea").val();
+// $("<div>").text($textToescape);
+// escape("$textToescape")
