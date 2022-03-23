@@ -147,15 +147,16 @@ $(document).ready(function() {
   //step 2
   // const $tweet = createTweetElement(tweetData);
   // $('#tweets-container').append($tweet);
-  renderTweets(data);//step 1 (Dynamic tweets)
+  //renderTweets(data);//step 1 (Dynamic tweets)
   // $( "#target" ).on("submit", function() {
   //   alert( "Handler for .submit() called." );
   //   preventDefault();
   // });
   //form submission with jQuery
   $("#target").submit(onSubmit);
+  //Fetching tweets with Ajax make a get request for JSON data
+  loadTweets();
 });
-
 
 //step 1 You can start by having your function create hardcoded tweets, like so:
 // const createTweetElement = function () {
@@ -189,7 +190,7 @@ const createTweetElement = function (tweetData) {//single tweet object from the 
   <div class="single-tweet">${tweetData.content.text}</div>
   <div><hr></hr></div>
   <footer>
-    <p>${tweetData.created_at} days ago</p>
+    <p>${timeago.format(tweetData.created_at)}</p> 
     <div class="social-icons">
       <i class="fa-solid fa-flag"></i>
       <i class="fa-solid fa-retweet"></i>
@@ -201,30 +202,30 @@ return $tweet;
 };
 
 //step 3 render tweets 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
+// const data = [
+//   {
+//     "user": {
+//       "name": "Newton",
+//       "avatars": "https://i.imgur.com/73hZDYK.png"
+//       ,
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1461116232227
+//   },
+//   {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": "https://i.imgur.com/nlhLi3I.png",
+//       "handle": "@rd" },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1461113959088
+//   }
+// ]
 
  // loops through tweets
   // calls createTweetElement for each tweet
@@ -237,7 +238,6 @@ const renderTweets = function(tweets) {//data array
   }
 };
 
-
 const onSubmit = function(event) {
   event.preventDefault();
   const formData = $(this).serialize();//creates a text string in standard URL-encoded notation
@@ -247,3 +247,12 @@ const onSubmit = function(event) {
     console.log("success!", data);
   })  
 };
+
+const loadTweets = function() {
+  $.getJSON('http://localhost:8080/tweets')
+  .then(function(tweets) {
+    //console.log("success!", tweets);
+    renderTweets(tweets);
+  })  
+};
+
