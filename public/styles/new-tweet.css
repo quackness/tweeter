@@ -33,11 +33,20 @@ textarea {
   margin: 3px;
 }
 
-/* //attribute for a placeholder
-::placeholder {
-  font-weight: bold;
-} */
+.error{
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('https://i.imgur.com/GnyDvKN.png');
+  border: 1px solid;
+  margin: 40px 0px;
+  padding: 15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;  
+}
 
+  /* .error:empty {
+    display: none;  
+} */
 
 
 

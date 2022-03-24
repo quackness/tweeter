@@ -9,8 +9,12 @@ $(document).ready(function() {
     counterEl.html(charsLeft);
     if (charsLeft > 0) {
       counterEl.css("color", "grey");
+      $(".error").hide();
+      $(".error").html("");
     } else {
       counterEl.css("color", "red");
+      $(".error").show();
+      $(".error").html("Tweet too long");
     };
   });
   console.log("testing a doc")
