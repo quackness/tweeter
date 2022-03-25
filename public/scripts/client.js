@@ -18,9 +18,9 @@ $(document).ready(function() {
   // });
   //form submission with jQuery
   $("#target").submit(onSubmit);
-  $("button").click(function(){
-    $(".error").slideDown("fast");
-  });
+  // $("button").click(function() {
+  //   $(".error").slideDown("fast");
+  // });
   loadTweets();
 });
 
@@ -113,26 +113,32 @@ const onSubmit = function(event) {
   console.log($textinput);
    if (!$textinput) {
     //  alert("Input field cannot be empty")
-     $(".error").show();
+     $(".error").slideDown('fast');
      $(".error").html("Tweet cannot be empty");
-   } else if ($textinput.trim().length > 140) {
+    
+   }
+    else if ($textinput.trim().length > 140) {
     // alert("Tweet too long")
-    // $(".error").show();
-    // $(".error").html("Tweet too long");
-   } else {
-  const formData = $(this).serialize();//creates a text string in standard URL-encoded notation
-  //console.log(formData);
- 
-  $.post("/tweets", formData)
+    $(".error").slideDown('fast');
+    $(".error").html("Tweet too long");
+   } 
+   else {
+    const formData = $(this).serialize();//creates a text string in standard URL-encoded notation
+    //console.log(formData);
+  
+    $.post("/tweets", formData)
     .then(function(data) {
-    //console.log("success!", data);
-    const $tweet = createTweetElement(data);
-    //console.log($tweet);
-    $("#tweets-feed").prepend($tweet);
-    //formData.val("");
-    // $("#target").reset();
-    $("#tweet-text").val("")//sets the value to the empty string 
-    $(".error").hide();
+      //console.log("success!", data);
+      const $tweet = createTweetElement(data);
+      //console.log($tweet);
+      $("#tweets-feed").prepend($tweet);
+      //formData.val("");
+      // $("#target").reset();
+      $("#tweet-text").val("")//sets the value to the empty string 
+      $(".error").hide();
+      
+      //reset the counter to 140
+      $(".counter").html("140")
     })
    }
 };
