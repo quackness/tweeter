@@ -8,6 +8,7 @@ $(document).ready(function() {
   //step 1 part 2
   // const $tweet = createTweetElement();
   // $('#tweets-container').append($tweet);
+
   //step 2
   // const $tweet = createTweetElement(tweetData);
   // $('#tweets-container').append($tweet);
@@ -43,8 +44,8 @@ $(document).ready(function() {
 //   "created_at": 1461116232227
 // }
 
- //function that returns a tweet
-const createTweetElement = function (tweetData) {//single tweet object from the array
+//function that returns a tweet
+const createTweetElement = function(tweetData) {//single tweet object from the array
   const $tweet = $(`<article class="tweet"> 
   <header>
     <div class="header-left">
@@ -64,43 +65,12 @@ const createTweetElement = function (tweetData) {//single tweet object from the 
     </div>
   </footer>
 </article>`);
-return $tweet;
+  return $tweet;
 };
 
-//step 3 render tweets 
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ]
-
- // loops through tweets
-  // calls createTweetElement for each tweet
-  // takes return value and appends it to the tweets container
-  //$('#tweets-container').append($tweet);
-const renderTweets = function(tweets) {//data array
+const renderTweets = function(tweets) {
   for (let tweet of tweets) {
     const $tweet = createTweetElement(tweet);
-    console.log("tweet inside loop", $tweet);
     $('#tweets-feed').append($tweet);
   }
 };
@@ -110,62 +80,39 @@ const onSubmit = function(event) {
   $(".error").hide();
   //validate the form
   const $textinput = $(this).closest("form").find("textarea").val();
-  console.log($textinput);
-   if (!$textinput) {
-    //  alert("Input field cannot be empty")
-     $(".error").slideDown('fast');
-     $(".error").html("Tweet cannot be empty");
-    
-   }
-    else if ($textinput.trim().length > 140) {
-    // alert("Tweet too long")
+  //console.log($textinput);
+  if (!$textinput) {
+    $(".error").slideDown('fast');
+    $(".error").html("Tweet cannot be empty");
+  } else if ($textinput.trim().length > 140) {
     $(".error").slideDown('fast');
     $(".error").html("Tweet too long");
-   } 
-   else {
-    const formData = $(this).serialize();//creates a text string in standard URL-encoded notation
-    //console.log(formData);
-  
+  } else {
+    const formData = $(this).serialize();
     $.post("/tweets", formData)
-    .then(function(data) {
-      //console.log("success!", data);
-      const $tweet = createTweetElement(data);
-      //console.log($tweet);
-      $("#tweets-feed").prepend($tweet);
-      //formData.val("");
-      // $("#target").reset();
-      $("#tweet-text").val("")//sets the value to the empty string 
-      $(".error").hide();
-      
-      //reset the counter to 140
-      $(".counter").html("140")
-    })
-   }
+      .then(function(data) {
+        console.log("success!", data);
+        const $tweet = createTweetElement(data);
+        $("#tweets-feed").prepend($tweet);
+        $("#tweet-text").val('');
+        $(".error").hide();
+        $(".counter").html('140');
+      });
+  }
 };
 
 const loadTweets = function() {
   $.getJSON('http://localhost:8080/tweets')
-  .then(function(tweets) {
+    .then(function(tweets) {
     //console.log("success!", tweets);
-    renderTweets(tweets);
-  })  
+      renderTweets(tweets);
+    });
 };
 
-// escape function
 
-const escape = function (str) {
+const escape = function(str) {
   let div = document.createElement("div");//creates a div in DOM
   div.appendChild(document.createTextNode(str));//appending child with a string
-    return div.innerHTML;//returns the HTML content (inner HTML) of an element.
+  return div.innerHTML;//returns the HTML content (inner HTML) of an element.
 };
 
-
- 
-
-
-// $.escapeSelector( "#target" ); // "\#target"
-// const escape = function (tweetContent) {
-// }
-// const $textToescape = $(this).closest("form").find("textarea").val();
-// $("<div>").text($textToescape);
-// escape("$textToescape")

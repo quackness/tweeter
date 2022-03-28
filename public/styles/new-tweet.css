@@ -8,7 +8,6 @@ form > label {
   font-weight: bold;
 }
 
-
 .tweet-line {
   display: flex;
   justify-content: space-between;
@@ -33,7 +32,7 @@ textarea {
   margin: 3px;
 }
 
-.error{
+.error {
   color: #D8000C;
   background-color: #FFBABA;
   background-image: url('https://i.imgur.com/GnyDvKN.png');
@@ -43,10 +42,3 @@ textarea {
   background-repeat: no-repeat;
   background-position: 10px center;  
 }
-
-  /* .error:empty {
-    display: none;  
-} */
-
-
-

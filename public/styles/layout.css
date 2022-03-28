@@ -31,8 +31,18 @@ body {
    display: flex;
    justify-content: center;
    flex-direction: column;
-   width: 90%; /* XX% of body */
+   width: 90%;
    margin-left: auto;
    margin-right: auto;
  }
 
+ #tweets-feed {
+   margin-bottom: 100px;
+ }
+
+.bottom p {
+  display: flex;
+  justify-content: flex-end;
+  height: 60px;
+  margin-right: 50px;
+}
