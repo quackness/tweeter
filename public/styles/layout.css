@@ -1,8 +1,3 @@
-/*
- * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
- * https://css-tricks.com/international-box-sizing-awareness-day/
- * Do not modify these two selectors, please
- */
 html {
   box-sizing: border-box;
 }
@@ -10,22 +5,14 @@ html {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
-
 body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
-  top: 120px;/* nav top is 0, has height of 120px so body starts at 120px to align*/
-  position: relative;/* relative to body tag https://www.youtube.com/watch?v=jx5jmI0UlXU */
+  top: 120px;
+  position: relative;
 }
-
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
 
  .container {
    display: flex;

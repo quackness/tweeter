@@ -40,5 +40,6 @@ textarea {
   margin: 40px 0px;
   padding: 15px 10px 15px 50px;
   background-repeat: no-repeat;
-  background-position: 10px center;  
+  background-position: 10px center;
+  display: none;
 }
