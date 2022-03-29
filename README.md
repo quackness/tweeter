@@ -8,7 +8,6 @@ It has been built for learning purposes. Not intended to use in production-grade
 
 ![Desktop](/public/images/desktop.png)
 
-
 ![Mobile](/public/images/mobile.png)
 
 
@@ -26,3 +25,5 @@ It has been built for learning purposes. Not intended to use in production-grade
 - Express
 - Node 5.10.x or above
 - Body Parser
+- Chance
+
