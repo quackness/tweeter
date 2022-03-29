@@ -48,7 +48,6 @@ const onSubmit = function(event) {
     const formData = $(this).serialize();
     $.post("/tweets", formData)
       .then(function(data) {
-        console.log("success!", data);
         const $tweet = createTweetElement(data);
         $("#tweets-feed").prepend($tweet);
         $("#tweet-text").val('');

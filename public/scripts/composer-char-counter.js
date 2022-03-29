@@ -1,7 +1,5 @@
 $(document).ready(function() {
   $("#tweet-text").on("input", function() {
-    console.log($(this).val());
-    console.log($(this.parentElement).find(".tweet-line"));
     let charsLeft = 140 - $(this).val().length;
     let counterEl = $(this).parent().find(".counter");
     counterEl.html(charsLeft);
