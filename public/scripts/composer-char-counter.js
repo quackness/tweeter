@@ -10,7 +10,7 @@ $(document).ready(function() {
     } else {
       counterEl.css("color", "red");
       $(".error").show();
-      $(".error").html("Tweet too long");
+      $(".error").html("Tweet too long. The character limit is 140.");
     }
   });
 });
